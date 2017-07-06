@@ -25,35 +25,36 @@ import {setNetworkConnectedAction, setNetworkConnectionTypeChanged} from './redu
  *  this.networkMonitor.stop();
  * }
  */
-export default class NetworkMonitor {
+class NetworkMonitor {
   constructor(store: Function) {
     // Get initial state
     NetInfo.isConnected.fetch().then(isConnected => this._onConnectedChanged(isConnected));
 
     NetInfo.fetch().then(connectionType => this._onConnectionTypeChanged(connectionType));
+
     if (!store || !store.dispatch) {
       throw new Error('Pass your store instance into `new NetworkMonitor(store)` to use');
     }
     this.dispatch = store.dispatch;
+
+    this._onConnectionTypeChanged = connectionType => {
+      this.dispatch(setNetworkConnectionTypeChanged(connectionType));
+    };
+
+    this._onConnectedChanged = connected => {
+      this.dispatch(setNetworkConnectedAction(connected));
+    };
   }
-
-  _onConnectionTypeChanged = connectionType => {
-    this.dispatch(setNetworkConnectionTypeChanged(connectionType));
-  };
-
-  _onConnectedChanged = connected => {
-    this.dispatch(setNetworkConnectedAction(connected));
-  };
 
   start() {
     NetInfo.addEventListener('change', this._onConnectionTypeChanged);
-
     NetInfo.isConnected.addEventListener('change', this._onConnectedChanged);
   }
 
   stop() {
     NetInfo.removeEventListener('change', this._onConnectionTypeChanged);
-
     NetInfo.isConnected.removeEventListener('change', this._onConnectedChanged);
   }
 }
+
+export default NetworkMonitor;
