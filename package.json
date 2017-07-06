@@ -1,0 +1,34 @@
+{
+  "name": "react-native-redux-connectivity",
+  "version": "0.0.1",
+  "description": "Monitor network connectivity and story the result in Redux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calvium/react-native-redux-connectivity.git"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "network",
+    "wifi",
+    "connectivity"
+  ],
+  "author": "Ben Clayton <ben@calvium.com> (https://www.calvium.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calvium/react-native-redux-connectivity/issues"
+  },
+  "homepage": "https://github.com/calvium/react-native-redux-connectivity#readme",
+  "peerDependencies": {
+    "react-native": ">=0.39.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-calvium": "^0.3.0",
+    "flow-bin": "^0.42.0"
+  }
+}
