@@ -17,7 +17,7 @@
     "wifi",
     "connectivity"
   ],
-  "author": "Ben Clayton <ben@calvium.com> (https://www.calvium.com)",
+  "author": "Pablo Isidoro Carrillo Alvarez <pablo@calvium.com> (https://www.calvium.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/calvium/react-native-redux-connectivity/issues"
