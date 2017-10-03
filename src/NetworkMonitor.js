@@ -1,5 +1,5 @@
 import {NetInfo} from 'react-native';
-import {setNetworkConnectedAction, setNetworkConnectionTypeChanged} from './redux/actions';
+import {setNetworkAction} from './redux';
 
 /**
  * Monitors:
@@ -27,33 +27,27 @@ import {setNetworkConnectedAction, setNetworkConnectionTypeChanged} from './redu
  */
 class NetworkMonitor {
   constructor(store: Function) {
-    // Get initial state
-    NetInfo.isConnected.fetch().then(isConnected => this._onConnectedChanged(isConnected));
 
-    NetInfo.fetch().then(connectionType => this._onConnectionTypeChanged(connectionType));
+    this.handleConnectivityChange = ({type, effectiveType}) => {
+      const connected = type && type !== 'none';
+      console.log(`NetworkMonitor: connected:${connected} type:${type} effectiveType:${effectiveType}`);
+      this.dispatch(setNetworkAction(connected, type, effectiveType));
+    }
+
+    NetInfo.getConnectionInfo().then(this.handleConnectivityChange);
 
     if (!store || !store.dispatch) {
       throw new Error('Pass your store instance into `new NetworkMonitor(store)` to use');
     }
     this.dispatch = store.dispatch;
-
-    this._onConnectionTypeChanged = connectionType => {
-      this.dispatch(setNetworkConnectionTypeChanged(connectionType));
-    };
-
-    this._onConnectedChanged = connected => {
-      this.dispatch(setNetworkConnectedAction(connected));
-    };
   }
 
   start() {
-    NetInfo.addEventListener('change', this._onConnectionTypeChanged);
-    NetInfo.isConnected.addEventListener('change', this._onConnectedChanged);
+    NetInfo.addEventListener('connectionChange', this.handleConnectivityChange);
   }
 
   stop() {
-    NetInfo.removeEventListener('change', this._onConnectionTypeChanged);
-    NetInfo.isConnected.removeEventListener('change', this._onConnectedChanged);
+    NetInfo.removeEventListener('connectionChange', this.handleConnectivityChange);
   }
 }
 
