@@ -7,7 +7,7 @@ type ActionType = {
   connectionType?: string,
 };
 
-export function setNetworkAction(connected: boolean, type: string, effectiveType:string) {
+export function setNetworkAction(connected: boolean, connectionType: string, effectiveType:string) {
   return {
     type: NETWORK_CHANGED,
     connected,
