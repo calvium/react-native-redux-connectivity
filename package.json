@@ -1,6 +1,6 @@
 {
   "name": "react-native-redux-connectivity",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Monitor network connectivity and story the result in Redux",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/calvium/react-native-redux-connectivity#readme",
   "peerDependencies": {
-    "react-native": ">=0.39.2"
+    "react-native": ">=0.48.0"
   },
   "devDependencies": {
     "eslint": "^3.19.0",

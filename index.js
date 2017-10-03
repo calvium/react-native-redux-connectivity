@@ -1,4 +1,4 @@
 import NetworkMonitor from './src/NetworkMonitor';
-import NetworkReducer from './src/redux/reducer';
+import NetworkReducer from './src/redux';
 
 export {NetworkMonitor, NetworkReducer};
