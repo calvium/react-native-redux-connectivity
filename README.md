@@ -5,6 +5,9 @@ Monitors:
 - Network connectivity
 - Network type (e.g. wifi)
 
+> This library is compatible with React Native 0.48 and up only.
+> For compatibility with earlier versions of React Native, please use version 0.1.0
+
 # Installation
 
 ```
