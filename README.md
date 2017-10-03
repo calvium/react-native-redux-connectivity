@@ -60,9 +60,8 @@ You'll then see in Redux:
 ```js
 network: { 
   connected: boolean, // true if there's an Internet connection
-  connectionType: 
-   /* on iOS */ 'none'|'wifi'|'cell'|'unknown'|
-   /* on Android */'NONE'|'BLUETOOTH'|'DUMMY'|'ETHERNET'|'MOBILE'|'WIFI'|'VPN' // See NetInfo docs on React Native for more info, there are a few more Android cases
+  connectionType: 'none'|'wifi'|'cell'|'unknown',
+  effectiveType: '2g'|'3g'|'4g'|'unknown',
 }
 ```
 
