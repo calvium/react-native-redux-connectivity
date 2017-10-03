@@ -11,7 +11,7 @@ export function setNetworkAction(connected: boolean, type: string, effectiveType
   return {
     type: NETWORK_CHANGED,
     connected,
-    type,
+    connectionType,
     effectiveType,
   };
 }
@@ -25,7 +25,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         connected: action.connected,
-        type: action.type,
+        connectionType: action.connectionType,
         effectiveType: action.effectiveType,
       };
     default:
