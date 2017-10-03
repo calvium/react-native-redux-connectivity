@@ -3,8 +3,9 @@ const NETWORK_CHANGED = 'redux-connectivity/NETWORK_CHANGED';
 
 type ActionType = {
   type: string,
-  connected?: boolean,
-  connectionType?: string,
+  connected: boolean,
+  connectionType: 'none'|'wifi'|'cell'|'unknown',
+  effectiveType: '2g'|'3g'|'4g'|'unknown',
 };
 
 export function setNetworkAction(connected: boolean, connectionType: string, effectiveType:string) {
@@ -17,6 +18,9 @@ export function setNetworkAction(connected: boolean, connectionType: string, eff
 }
 
 const initialState = {
+  connected: false,
+  connectionType: 'none',
+  effectiveType: 'unknown',
 };
 
 export default function reducer(state = initialState, action) {
