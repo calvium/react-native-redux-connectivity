@@ -25,7 +25,7 @@ declare module 'react-native-redux-connectivity' {
     effectiveType: effectiveTypeType;
   }
 
-  export function NetworkReducer(state: NetworkMonitorState, action: NetworkActionType): NetworkMonitorState;
+  export function NetworkReducer(state: NetworkMonitorState, action: NetworkActionType | any): NetworkMonitorState;
   namespace NetworkReducer {
     export function setNetworkAction(
       connected: boolean,
