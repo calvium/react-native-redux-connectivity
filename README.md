@@ -5,8 +5,8 @@ Monitors:
 - Network connectivity
 - Network type (e.g. wifi)
 
-> This library is compatible with React Native 0.48 and up only.
-> For compatibility with earlier versions of React Native, please use version 0.1.0
+> This library is compatible with React Native 0.57 and up only.
+> For compatibility with earlier versions of React Native, please use version 0.2.0
 
 # Installation
 
@@ -20,6 +20,18 @@ or
 yarn add react-native-redux-connectivity
 ```
 
+You will also need to add [@react-native-community/netinfo](https://github.com/react-native-community/react-native-netinfo) and follow the instructions to link the library
+
+```
+npm install --save @react-native-community/netinfo
+```
+
+or 
+
+```
+react-native link @react-native-community/netinfo
+```
+
 # Usage
 
 In your main app component:
@@ -30,11 +42,9 @@ const store = [IMPORT YOUR REDUX STORE HERE]
 
 class App extends Component {
   constructor(props) {
+    super(props);
     this.networkMonitor = new NetworkMonitor(store);
-  }
- 
- componentWillMount() {
-  this.networkMonitor.start();
+    this.networkMonitor.start();
  }
  
  componentWillUnmount() {
