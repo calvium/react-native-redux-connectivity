@@ -34,7 +34,7 @@ class NetworkMonitor {
       this.dispatch(setNetworkAction(connected, type, effectiveType));
     }
 
-    NetInfo.getConnectionInfo().then(this.handleConnectivityChange);
+    NetInfo.fetch().then(this.handleConnectivityChange);
 
     if (!store || !store.dispatch) {
       throw new Error('Pass your store instance into `new NetworkMonitor(store)` to use');
@@ -43,11 +43,11 @@ class NetworkMonitor {
   }
 
   start() {
-    NetInfo.addEventListener('connectionChange', this.handleConnectivityChange);
+    NetInfo.addEventListener(this.handleConnectivityChange);
   }
 
   stop() {
-    NetInfo.removeEventListener('connectionChange', this.handleConnectivityChange);
+    NetInfo.removeEventListener(this.handleConnectivityChange);
   }
 }
 
